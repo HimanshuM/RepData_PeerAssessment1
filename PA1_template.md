@@ -96,7 +96,7 @@ sum(is.na(Data$steps))
 
 
 My! My! There are a lot of NAs in steps in the original data, that would biase all our calculations. Let's remove them and substitute with something meaningful.
-<br>**Strategy:** Impute them with the average steps of that interval.
+<br>**Strategy:** Replace the NAs in steps with the average steps of that interval.
 
 
 ```r
@@ -120,6 +120,10 @@ hist(tapply(NewData$steps, NewData$date, sum), xlab = "New steps per day", main 
 ```
 
 ![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+
+
+And their mean and median are?:
+
 
 ```r
 Sum <- as.numeric(tapply(NewData$steps, NewData$date, sum))
@@ -176,7 +180,7 @@ xyplot(interval ~ StepsPerInterval | Day, data = NewData, layout = c(1, 2),
     type = "l", xlab = "interval", ylab = "Number of steps", main = "Number of steps vs. interval")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
 
 
 That's all folks!
